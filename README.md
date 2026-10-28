@@ -175,6 +175,19 @@ The file is sent to each harness's model provider — keep secrets and credentia
   reset, then confirm the first request is full and the second is state.
 - **Drive with the clone unmounted** — symlink dangles, injection silently stops.
 
+## Companion skill
+
+`skills/agent-sync/SKILL.md` automates what the plugin assumes but never creates: project
+`AGENTS.md` with a memory pointer, `docs/agents` templates, the global rules symlink
+(`~/.zcode/AGENTS.md`), skill symlinks, shadow checks, and MCP parity between ZCode and OpenCode.
+
+```sh
+ln -s <repo>/skills/agent-sync ~/.config/opencode/skills/agent-sync
+```
+
+Loads on demand; costs nothing when idle. The plugin injects memory, the skill sets up and
+audits the files it injects.
+
 ## License
 
 MIT
