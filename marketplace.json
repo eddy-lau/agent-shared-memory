@@ -1,0 +1,15 @@
+{
+  "name": "shared-memory-local",
+  "description": "Local marketplace: shared workspace memory for ZCode",
+  "pluginRoot": ".",
+  "plugins": [
+    {
+      "name": "shared-memory",
+      "source": "./zcode",
+      "description": "Inject workspace shared memory (docs/agents/handoff.md + decisions.md) into ZCode sessions",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": ["memory", "agent-sync", "handoff"]
+    }
+  ]
+}

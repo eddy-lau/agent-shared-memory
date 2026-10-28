@@ -1,0 +1,8 @@
+{
+  "name": "shared-memory",
+  "version": "0.1.0",
+  "description": "Inject workspace shared memory (docs/agents/handoff.md + decisions.md) into ZCode sessions",
+  "author": "local",
+  "license": "MIT",
+  "keywords": ["memory", "agent-sync", "handoff"]
+}
