@@ -158,6 +158,18 @@ cd /path/to/workspace && opencode run "From the shared memory in your system pro
 
 First request should carry `## Notes`; the next request should not.
 
+Deterministic check — the model cannot be trusted to introspect its own system prompt, so use the debug toggle:
+
+```sh
+touch ~/.cache/zcode/shared-memory/debug
+opencode --standalone run "Use the bash tool once: echo hi. Then answer: done"
+cat ~/.cache/zcode/shared-memory/opencode-debug.log   # expect mode=full, then mode=state
+rm ~/.cache/zcode/shared-memory/debug
+```
+
+`--standalone` loads the plugin from disk in a fresh process. The background service
+caches plugin code, so a code change may need a service restart before it takes effect.
+
 ### 6. Session loop
 
 At the end of a session: rewrite `## State`, update `## In flight`, append durable traps to
@@ -173,6 +185,9 @@ The file is sent to each harness's model provider — keep secrets and credentia
   `failed to load plugin`; verify the symlink resolves.
 - **Always full, never state** — delete `~/.cache/zcode/shared-memory/*.opencode.json` to
   reset, then confirm the first request is full and the second is state.
+- **Debug the plugin** — `touch ~/.cache/zcode/shared-memory/debug` before a run; each
+  injection appends a line (`mode=full|state`, bytes) to
+  `~/.cache/zcode/shared-memory/opencode-debug.log`.
 - **Drive with the clone unmounted** — symlink dangles, injection silently stops.
 
 ## Companion skill
