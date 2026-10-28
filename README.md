@@ -1,5 +1,12 @@
 # shared-memory
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+    <img src="assets/hero-light.svg" width="900" alt="docs/agents/handoff.md and decisions.md flow through a shared-memory reader into ZCode and OpenCode sessions">
+  </picture>
+</p>
+
 Workspace memory that ZCode and OpenCode read automatically: `docs/agents/handoff.md`
 (authoritative current state) plus `docs/agents/decisions.md` (append-only log), injected
 into the model context by both harnesses. Full handoff once, compact state after that.
